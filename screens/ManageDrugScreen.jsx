@@ -6,11 +6,23 @@ import {
   TextInput,
   Pressable,
   Alert,
+  ScrollView,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Platform,
+  Keyboard,
+  Image,
 } from "react-native";
+import {
+  launchCameraAsync,
+  useCameraPermissions,
+  PermissionStatus,
+} from "expo-image-picker";
 import { COLORS } from "../constants/colors";
 import Button from "../components/Button";
 import { DrugsContext } from "../store/drugs-context";
 import InputField from "../components/InputField";
+import { Drug } from "../models/Drug";
 
 export default function ManageDrugScreen({ navigation, route }) {
   const drugId = route.params?.drugId;
@@ -18,38 +30,180 @@ export default function ManageDrugScreen({ navigation, route }) {
 
   const drugsContext = useContext(DrugsContext);
 
-  const drug = drugsContext.drugs.find((drug) => drug.id === drugId);
+  const existingDrug = drugsContext.drugs.find((drug) => drug.id === drugId);
 
-  const [drugName, setDrugName] = useState(drug?.name);
+  const [drugName, setDrugName] = useState(() =>
+    existingDrug ? existingDrug.name : ""
+  );
+  const [drugPrice, setDrugPrice] = useState(() =>
+    existingDrug ? existingDrug.price : ""
+  );
+  const [drugContents, setDrugContents] = useState(() =>
+    existingDrug ? existingDrug.contents : ""
+  );
+  const [drugPharmacology, setDrugPharmacology] = useState(() =>
+    existingDrug ? existingDrug.pharmacology : ""
+  );
+  const [drugSubCategory, setDrugSubCategory] = useState(() =>
+    existingDrug ? existingDrug.subCategory : ""
+  );
+  const [drugProducer, setDrugProducer] = useState(() =>
+    existingDrug ? existingDrug.producer : ""
+  );
+  const [drugImageUrl, setDrugImageUrl] = useState(() =>
+    existingDrug ? existingDrug.imageUrl : ""
+  );
+  const [status, requestPermission] = useCameraPermissions();
+
+  const verifyCameraPermission = async () => {
+    if (status.status === PermissionStatus.UNDETERMINED) {
+      const permissionResponse = await requestPermission();
+      return permissionResponse.granted;
+    }
+    return status.granted;
+  };
+  const pickImage = async () => {
+    const hasPermission = await verifyCameraPermission();
+    if (!hasPermission) {
+      Alert.alert(
+        "Insufficient Permissions!",
+        "Please enable camera permissions"
+      );
+      return;
+    }
+    const imagePickerResult = await launchCameraAsync({
+      allowsEditing: true,
+      aspect: [16, 9],
+    });
+    if (!imagePickerResult.canceled) {
+      setDrugImageUrl(imagePickerResult.assets[0].uri);
+      onImageCapture(imagePickerResult.assets[0].uri);
+    } else {
+      console.log("canceled");
+    }
+  };
 
   const saveDrugHandler = () => {
-    if (!drugName || drugName.trim().length === 0) {
-      Alert.alert("Drug can't be empty", "Please enter drug details!");
+    if (
+      drugName.trim().length === 0 ||
+      drugContents.trim().length == 0 ||
+      drugPrice.length == 0 ||
+      drugPharmacology.length == 0 ||
+      drugSubCategory.length == 0 ||
+      drugProducer.length == 0 ||
+      drugImageUrl.length == 0
+    ) {
+      Alert.alert("Missing Details", "Please enter all drug details!");
       return;
     }
 
-    if (drugsContext.drugs.find((item) => item.name === drugName.trim())) {
-      Alert.alert("Drug already exists", "Please enter a new name!");
-      return;
+    // if (drugsContext.drugs.find((item) => item.name === drugName.trim())) {
+    //   Alert.alert("Drug already exists", "Please enter a new name!");
+    //   return;
+    // }
+    if (addingNewDrug) {
+      const newDrug = new Drug(
+        drugsContext.drugs.length,
+        drugName.trim(),
+        drugContents.trim(),
+        drugPrice.trim(),
+        drugPharmacology.trim(),
+        drugSubCategory.trim(),
+        drugProducer.trim(),
+        drugImageUrl.trim()
+      );
+      drugsContext.addDrug(newDrug);
+    } else {
+      const drugDetails = {
+        name: drugName.trim(),
+        price: drugPrice,
+        contents: drugContents,
+        pharmacology: drugPharmacology,
+        subCategory: drugSubCategory,
+        producer: drugProducer,
+        imageUrl: drugImageUrl,
+      };
+      drugsContext.editDrug(drugId, drugDetails);
     }
-    if (addingNewDrug) drugsContext.addDrug(drugsContext.drugs.length, drugName.trim());
-    else drugsContext.editDrug(drugId, drugName.trim());
     navigation.goBack();
   };
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        {addingNewDrug ? "Add New Drug" : "Edit Drug Details"}
-      </Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <ScrollView style={styles.container}>
+        <Text style={styles.title}>
+          {addingNewDrug ? "Add New Drug" : "Edit Drug Details"}
+        </Text>
 
-      <InputField
-        label="Name"
-        placeholder="Enter Drug Name..."
-        value={drugName}
-        onChangeText={setDrugName}
-      />
-      <Button onPress={saveDrugHandler}>Save</Button>
-    </View>
+        <View style={styles.formContainer}>
+          <InputField
+            label="Name"
+            placeholder="Enter Drug Name..."
+            value={drugName}
+            onChangeText={setDrugName}
+          />
+          <InputField
+            label="Price"
+            placeholder="Enter Drug Price..."
+            value={drugPrice}
+            onChangeText={setDrugPrice}
+            keyboardType="numeric"
+          />
+          <InputField
+            label="Contents"
+            placeholder="Enter Drug Contents..."
+            value={drugContents}
+            onChangeText={setDrugContents}
+          />
+          <InputField
+            label="Pharmacology"
+            placeholder="Enter Drug Pharmacology..."
+            value={drugPharmacology}
+            onChangeText={setDrugPharmacology}
+          />
+          <InputField
+            label="Sub Category"
+            placeholder="Enter Drug Sub Category..."
+            value={drugSubCategory}
+            onChangeText={setDrugSubCategory}
+          />
+          <InputField
+            label="Producer"
+            placeholder="Enter Drug Producer..."
+            value={drugProducer}
+            onChangeText={setDrugProducer}
+          />
+          <View style={styles.imagePickerContainer}>
+            <Text style={styles.label}>Image</Text>
+
+            <Pressable
+              onPress={pickImage}
+              style={({ pressed }) => [
+                styles.imagePreview,
+                pressed && styles.pressed,
+              ]}
+            >
+              {drugImageUrl ? (
+                <Image style={styles.image} source={{ uri: drugImageUrl }} />
+              ) : (
+                <Text style={styles.text}>Click to capture an image</Text>
+              )}
+            </Pressable>
+          </View>
+        </View>
+
+        <View style={{ marginBottom: 40 }}>
+          <Button
+            onPress={saveDrugHandler}
+            title="Save"
+            hasShadow={true}
+            buttonStyle={styles.button}
+          />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -65,12 +219,41 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-
+  formContainer: {
+    gap: 15,
+    marginBottom: 10,
+  },
   button: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.secondary,
     alignSelf: "center",
-    padding: 16,
-    borderRadius: 15,
-    marginTop: 10,
+    paddingVertical: 16,
+    paddingHorizontal: 25,
+    borderRadius: 20,
+  },
+  imagePickerContainer: {},
+  text: {
+    color: COLORS.secondaryText,
+  },
+  imagePreview: {
+    width: "100%",
+    height: 200,
+    marginVertical: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    borderColor: COLORS.primary,
+    borderWidth: 1,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+  },
+  pressed: {
+    opacity: 0.7,
+  },
+  label: {
+    color: COLORS.primary,
+    fontWeight: "bold",
+    fontSize: 18,
   },
 });

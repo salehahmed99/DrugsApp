@@ -1,11 +1,21 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  KeyboardAvoidingView,
+} from "react-native";
 import { COLORS } from "../constants/colors";
 import { useState } from "react";
 
-export default function InputField({value , onChangeText, label , placeholder}) {
-
+export default function InputField({
+  value,
+  onChangeText,
+  label,
+  placeholder,
+}) {
   return (
-    <>
+    <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         onChangeText={onChangeText}
@@ -14,11 +24,14 @@ export default function InputField({value , onChangeText, label , placeholder}) 
         style={styles.textInput}
         placeholderTextColor={COLORS.secondaryText}
       />
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    gap: 5,
+  },
   textInput: {
     borderWidth: 1,
     borderColor: COLORS.primary,
@@ -29,7 +42,6 @@ const styles = StyleSheet.create({
   label: {
     color: COLORS.primary,
     fontWeight: "bold",
-    marginBottom: 10,
     fontSize: 18,
   },
 });

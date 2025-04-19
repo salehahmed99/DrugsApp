@@ -1,4 +1,11 @@
-import { View, Text, SafeAreaView, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  TextInput,
+  Alert,
+} from "react-native";
 import DrugList from "../components/DrugList";
 import { COLORS } from "../constants/colors";
 import IconButton from "../components/IconButton";
@@ -19,15 +26,18 @@ function DrugsScreen({ navigation }) {
 
   useEffect(() => {
     const filteredDrugs = drugsContext.drugs.filter((drug) =>
-      drug.name.toLowerCase().includes(searchQuery.toLowerCase())
+      drug.name.toLowerCase().includes(searchQuery.trim().toLowerCase())
     );
     setDisplayedDrugs(filteredDrugs);
   }, [searchQuery, drugsContext.drugs]);
-
   const sortDisplayedDrugs = () => {
-    const sortedDrugs = sortAsending
-      ? [...displayedDrugs].sort()
-      : [...displayedDrugs].sort().reverse();
+    const sortedDrugs = [...displayedDrugs].sort((a, b) => {
+      if (sortAsending) {
+        return a.name.localeCompare(b.name);
+      } else {
+        return b.name.localeCompare(a.name);
+      }
+    });
     setDisplayedDrugs(sortedDrugs);
     setSortAscending(!sortAsending);
   };
@@ -45,14 +55,14 @@ function DrugsScreen({ navigation }) {
           icon="sort"
           size={24}
         />
+        <IconButton
+          icon="add"
+          style={styles.addDrugButton}
+          onPress={addDrugHandler}
+          size={24}
+        />
       </View>
       <DrugList drugs={displayedDrugs} />
-      <IconButton
-        icon="add"
-        style={styles.addDrugButton}
-        onPress={addDrugHandler}
-        size={24}
-      />
     </View>
   );
 }
@@ -64,8 +74,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 20,
-    position:'relative'
+    paddingTop: 20,
+    position: "relative",
   },
   title: {
     fontSize: 30,
@@ -76,19 +86,18 @@ const styles = StyleSheet.create({
   },
 
   addDrugButton: {
-    marginBottom: 10,
-    position:'absolute',
-    right:20,
-    bottom:20,
+    backgroundColor: COLORS.primary,
   },
   sortButton: {
-    marginLeft: 10,
+    backgroundColor: COLORS.secondary,
   },
   searchOuterContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
+    marginHorizontal: 20,
+    gap: 10,
   },
   searchContainer: {
     flex: 1,

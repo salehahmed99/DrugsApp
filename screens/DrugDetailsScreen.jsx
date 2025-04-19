@@ -1,38 +1,87 @@
-import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { PANADOL, TELFAST } from "../constants/colors";
+import React, { useContext } from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
+import DrugDetailItem from "../components/DrugDetailItem";
+import { DrugsContext } from "../store/drugs-context";
+import { COLORS } from "../constants/colors";
+import IconButton from "../components/IconButton";
+import Button from "../components/Button";
 
-export default function DrugDetailsScreen({ route }) {
+export default function DrugDetailsScreen({ route, navigation }) {
+  const drugsContext = useContext(DrugsContext);
   const drugId = route.params.drugId;
-  const drug = drugId === 0 ? PANADOL : TELFAST;
+  const drug = drugsContext.drugs.find((drug) => drug.id === drugId);
+
+  const editHandler = () => {
+    navigation.navigate("ManageDrugScreen", {
+      drugId: drugId,
+    });
+  };
+
+  const deleteHandler = () => {
+    Alert.alert(
+      "Confirm Delete",
+      "Are you sure you want to delete this item?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: () => {
+            drugsContext.deleteDrug(drugId);
+            navigation.goBack();
+          },
+        },
+      ]
+    );
+  };
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={{ uri: drug.imageUrl }} style={styles.image} />
       </View>
 
-      <Text style={styles.name}>{drug.name}</Text>
-
-      <Text style={styles.contents}>{drug.contents.replace(/\+/g, " • ")}</Text>
-
-      <View style={styles.detailRow}>
-        <Text style={styles.detailName}>Pharmacology : </Text>
-        <Text style={styles.detailText}>{drug.pharmacology}</Text>
+      <View>
+        <Text style={styles.name}>{drug.name}</Text>
+        <Text style={styles.contents}>
+          {drug.contents.replace(/\+/g, " • ")}
+        </Text>
       </View>
 
-      <View style={styles.detailRow}>
-        <Text style={styles.detailName}>Sub-Category : </Text>
-        <Text style={styles.detailText}>{drug.subCategogry}</Text>
+      <View style={styles.detailsContainer}>
+        <DrugDetailItem
+          detailName="Sub-Category : "
+          detailText={drug.subCategory}
+        />
+        <DrugDetailItem
+          detailName="Pharmacology : "
+          detailText={drug.pharmacology}
+        />
+        <DrugDetailItem detailName="Producer : " detailText={drug.producer} />
+        <DrugDetailItem detailName="Price : " detailText={drug.price} />
       </View>
-
-      <View style={styles.detailRow}>
-        <Text style={styles.detailName}>Producer : </Text>
-        <Text style={styles.detailText}>{drug.producer}</Text>
-      </View>
-
-      <View style={styles.detailRow}>
-        <Text style={styles.detailName}>Price : </Text>
-        <Text style={styles.detailText}>{drug.price}</Text>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={editHandler}
+          title="Edit"
+          buttonStyle={[styles.button, { backgroundColor: COLORS.accent }]}
+          hasShadow={true}
+        />
+        <Button
+          onPress={deleteHandler}
+          title="Delete"
+          buttonStyle={[styles.button, { backgroundColor: COLORS.statusError }]}
+          hasShadow={true}
+        />
       </View>
     </View>
   );
@@ -51,29 +100,9 @@ const styles = StyleSheet.create({
     height: "100%",
     resizeMode: "contain",
   },
-  gradient: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: "50%",
-  },
-  priceTag: {
-    position: "absolute",
-    bottom: 16,
-    right: 16,
-    backgroundColor: "rgba(255,255,255,0.9)",
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 20,
-    fontSize: 16,
-    fontWeight: "700",
-    color: "#2a9d8f",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+  detailsContainer: {
+    marginBottom: 10,
+    width:'100%',
   },
   name: {
     fontSize: 18,
@@ -97,5 +126,25 @@ const styles = StyleSheet.create({
     color: "#4a4e69",
     marginBottom: 20,
     textAlign: "center",
+  },
+  edit: {
+    padding: 10,
+    backgroundColor: COLORS.accent,
+    marginHorizontal: 10,
+  },
+  delete: {
+    padding: 10,
+    backgroundColor: COLORS.statusError,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    alignSelf: "center",
+    gap: 20,
+    // justifyContent: "space-between",
+  },
+  button: {
+    paddingVertical: 16,
+    paddingHorizontal: 25,
+    borderRadius: 20,
   },
 });

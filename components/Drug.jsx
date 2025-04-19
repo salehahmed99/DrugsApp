@@ -1,37 +1,15 @@
-import { View, Text, StyleSheet, Alert, Pressable } from "react-native";
-import { COLORS } from "../constants/colors";
-import IconButton from "./IconButton";
+import { View, Text, StyleSheet, Alert, Pressable, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useContext } from "react";
 import { DrugsContext } from "../store/drugs-context";
+import Button from "./Button";
 
-export default function Drug({ id, name }) {
+export default function Drug({ id, hideAlternatives = false }) {
   const navigation = useNavigation();
 
   const drugsContext = useContext(DrugsContext);
-  const editHandler = () => {
-    navigation.navigate("ManageDrugScreen", {
-      drugId: id,
-    });
-  };
-
-  const deleteHandler = () => {
-    Alert.alert(
-      "Confirm Delete",
-      "Are you sure you want to delete this item?",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "Delete",
-          style: "destructive",
-          onPress: () => drugsContext.deleteDrug(id),
-        },
-      ]
-    );
-  };
+  const drug = drugsContext.drugs.find((drug) => drug.id === id);
+  if (!drug) return;
 
   const drugPressedHandler = () => {
     navigation.navigate("DrugDetailsScreen", {
@@ -39,65 +17,91 @@ export default function Drug({ id, name }) {
     });
   };
 
+  const alternativesPressedHandler = () => {
+    navigation.navigate("AlternativesScreen", {
+      drugId: id,
+    });
+  };
+
   return (
-    <Pressable
-      style={({ pressed }) => [styles.container, pressed && styles.pressed]}
-      onPress={drugPressedHandler}
-    >
-      <Text style={styles.text}>{name}</Text>
-      <View style={styles.buttonContainer}>
-        <IconButton
-          style={styles.edit}
-          icon="edit"
-          size={20}
-          onPress={editHandler}
-        />
-        <IconButton
-          style={styles.delete}
-          icon="delete"
-          size={20}
-          onPress={deleteHandler}
-        />
+    <View style={styles.container}>
+      <View style={styles.horizontalContainer}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={{ uri: drug.imageUrl }}
+            style={styles.image}
+            resizeMode="contain"
+          />
+        </View>
+        <View style={styles.detailsContainer}>
+          <Text style={styles.name}>{drug.name}</Text>
+          <Text style={styles.contents}>{drug.contents}</Text>
+        </View>
       </View>
-    </Pressable>
+      <View style={styles.buttonsContainer}>
+        <Button
+          title="Details"
+          onPress={drugPressedHandler}
+          buttonStyle={styles.button}
+          textStyle={{ fontSize: 14 }}
+        />
+        {}
+        {!hideAlternatives && (
+          <Button
+            title="Alternatives"
+            buttonStyle={styles.button}
+            textStyle={{ fontSize: 14 }}
+            onPress={alternativesPressedHandler}
+          />
+        )}
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
-    marginHorizontal: 5,
-    padding: 16,
-    borderRadius: 15,
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 0 },
-    shadowRadius: 5,
-    shadowOpacity: 0.4,
-    backgroundColor: "white",
-    backgroundColor: COLORS.primary,
+    paddingHorizontal: 16,
+    paddingVertical: 5,
+    borderBottomWidth: 1,
+  },
+  horizontalContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "stretch",
   },
-  text: {
-    fontSize: 20,
-    color: "white",
-    // borderWidth:2,
+  imageContainer: {
+    marginRight: 10,
   },
-  edit: {
-    padding: 10,
-    backgroundColor: COLORS.accent,
-    marginHorizontal: 10,
+  detailsContainer: {
+    justifyContent: "center",
+    flex: 1,
   },
-  delete: {
-    padding: 10,
-    backgroundColor: COLORS.statusError,
+  name: {
+    fontSize: 17,
+    color: "black",
+    marginBottom: 10,
   },
-  buttonContainer: {
-    flexDirection: "row",
-    // borderWidth:2,
+  contents: {
+    fontSize: 13,
+    color: "#4a4e69",
+    flexWrap: "wrap",
+    flexShrink:1,
   },
   pressed: {
     opacity: 0.7,
+  },
+  image: {
+    height: 80,
+    width: 70,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    gap: 10,
+  },
+  button: {
+    paddingVertical: 7,
+    paddingHorizontal: 7,
+    borderRadius: 7,
   },
 });

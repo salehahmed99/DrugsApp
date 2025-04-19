@@ -1,3 +1,5 @@
+import { Drug } from "../models/Drug";
+
 export const COLORS = {
   // Base Colors
   primary: "#4FC2BF",
@@ -36,29 +38,3 @@ export const COLORS = {
     primaryToSecondary: ["#4FC2BF", "#1E7CB4"],
   },
 };
-
-export const PANADOL = {
-  name: "PANADOL COLD&FLU F.C.TABS DAY 24",
-  price: "27 EGP",
-  contents: "CAFFEINE+PARACETAMOL+PHENYLEPHRINE",
-  pharmacology: "RESIPRATORY SYSTEM",
-  subCategogry: "Antipyretic",
-  producer: "GLAXOSMITHKLINE",
-  imageUrl:
-    "https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/panadol-reborn/en_ME/product-detail/380x463-new/Cold-n-Flu-Day.jpg?auto=format",
-};
-
-export const TELFAST = {
-  name: "TELFAST 120MG F.C. TAB 10",
-  price: "45 EGP",
-  contents: "FEXOFENADINE+HYDROCHLORIDE",
-  pharmacology: "ANTIHISTAMINES",
-  subCategogry: "Non-Sedating",
-  producer: "SANOFI-AVENTIS",
-  imageUrl: "https://www.telfast.com/dam/jcr:702f508f-9136-41e0-ab8f-50ef36149743/Telfast_180.png",
-};
-
-// You might want to update your component to include the additional fields:
-// - description
-// - dosage
-// - sideEffects
