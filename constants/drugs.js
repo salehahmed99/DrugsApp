@@ -45,9 +45,9 @@ const ABIMOL = new Drug(
   "ABIMOL 300MG 5 RECTAL",
   "PARACETAMOL",
   "15 > 15 EGP",
-  "ANTIHISTAMINES",
-  "Non-Sedating",
-  "EGYPTIAN INTERNATIONAL PHARMACEUTICAL INDUSTRIES CO.",
+  "ANALGESICS & ANTI-PYRETICS",
+  "PAIN, FEVER & INFLAMMMATIONS",
+  "GLAXO PHARMA",
   "http://egyptiandrugstore.com/image/cache/data/manar13/ABIMOL%20INF-400x400.png"
 );
 

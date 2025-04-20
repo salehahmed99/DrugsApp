@@ -6,6 +6,11 @@ import Button from "./Button";
 import { hp, wp } from "../helpers/common";
 import { COLORS } from "../constants/colors";
 import { Ionicons } from "@expo/vector-icons"
+import DrugDetailItem from "./DrugDetailRow";
+import DrugPrimaryDetails from "./DrugPrimaryDetails";
+import ButtonsContainer from "./ButtonsContainer";
+import PressableIcon from "./PressableIcon";
+import DrugSecondaryDetails from "./DrugSecondaryDetails";
 
 export default function Drug({ id, hideAlternatives = false }) {
   const navigation = useNavigation();
@@ -35,35 +40,22 @@ export default function Drug({ id, hideAlternatives = false }) {
   return (
     <View style={styles.container}>
       <View style={styles.horizontalContainer}>
-        <Image
-          source={{ uri: drug.imageUrl }}
-          style={styles.image}
-          resizeMode="contain"
-        />
-        <View style={styles.detailsContainer}>
-          <Text style={styles.textName}>{drug.name}</Text>
-          <Text style={styles.textContents}>{drug.contents}</Text>
-        </View>
-        <Pressable onPress={onDrugPress} style={({ pressed }) => [styles.chevronContainer, pressed && styles.pressed]}>
-          <Ionicons name={clicked ? "chevron-up" : "chevron-down"} size={18} color={clicked ? COLORS.secondary : COLORS.secondaryText} />
-        </Pressable>
-      </View>
-      {clicked && <View style={styles.buttonsContainer}>
-        <Button
-          title="Details"
-          onPress={onDetailsPress}
-          buttonStyle={styles.button}
-          textStyle={{ fontSize: hp(1.8) }}
-        />
-        {!hideAlternatives && (
-          <Button
-            title="Alternatives"
-            buttonStyle={styles.button}
-            textStyle={{ fontSize: hp(1.8) }}
-            onPress={onAlternativesPress}
+        <View style={styles.imageContainer}>
+          <Image
+            source={{ uri: drug.imageUrl }}
+            style={styles.image}
+            resizeMode="contain"
           />
-        )}
-      </View>}
+        </View>
+        <View style={styles.detailsContainer}>
+          <DrugPrimaryDetails clicked={clicked} name={drug.name} contents={drug.contents} price={drug.price} />
+          <DrugSecondaryDetails clicked={clicked} company={drug.company} pharmacology={drug.pharmacology} subCategory={drug.subCategory} />
+        </View>
+        <View style={styles.chevronContainer}>
+          <PressableIcon clicked={clicked} onDrugPress={onDrugPress} />
+        </View>
+      </View>
+      {clicked && <ButtonsContainer hideAlternatives={hideAlternatives} onAlternativesPress={onAlternativesPress} onDetailsPress={onDetailsPress} />}
     </View>
   );
 }
@@ -72,51 +64,34 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: wp(2),
     paddingVertical: hp(1),
+    gap: hp(2)
   },
   horizontalContainer: {
     flexDirection: "row",
     alignItems: "stretch",
-    // borderWidth: 1,
-    gap: wp(3),
+    gap: wp(2),
+  },
+  imageContainer: {
+    height: hp(8.5),
+    width: wp(20),
   },
   image: {
-    height: hp(10),
-    width: wp(20),
-    // borderWidth: 1,
+    width: '100%',
+    height: '100%'
   },
   detailsContainer: {
-    justifyContent: "center",
     flex: 1,
-    // borderWidth: 1,
-    gap: hp(1),
-    paddingHorizontal: wp(2),
+    gap: hp(1.5),
+    // borderWidth:1
   },
   chevronContainer: {
     justifyContent: 'center',
     padding: wp(4),
     // borderWidth:1
   },
-  textName: {
-    fontSize: hp(1.8),
-    color: "black",
-    fontWeight: "bold"
-  },
-  textContents: {
-    fontSize: hp(1.6),
-    color: COLORS.secondaryText,
-    flexWrap: "wrap",
-    flexShrink: 1,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    gap: wp(3),
-  },
-  button: {
-    paddingVertical: hp(1),
-    paddingHorizontal: hp(1),
-    borderRadius: 7,
-  },
+
+
+
   pressed: {
     opacity: 0.7,
   },

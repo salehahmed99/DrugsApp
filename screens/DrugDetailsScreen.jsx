@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import DrugDetailItem from "../components/DrugDetailItem";
+import DrugDetailItem from "../components/DrugDetailRow";
 import { DrugsContext } from "../store/drugs-context";
 import { COLORS } from "../constants/colors";
 import IconButton from "../components/IconButton";

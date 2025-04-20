@@ -6,7 +6,7 @@ export class Drug {
     price,
     pharmacology,
     subCategory,
-    producer,
+    company,
     imageUrl
   ) {
     this.id = id;
@@ -15,7 +15,7 @@ export class Drug {
     this.contents = contents;
     this.pharmacology = pharmacology;
     this.subCategory = subCategory;
-    this.producer = producer;
+    this.company = company;
     this.imageUrl = imageUrl;
   }
 }

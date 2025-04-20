@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { hp, wp } from "../helpers/common";
 import { COLORS } from "../constants/colors";
 
-export default function DrugDetailItem({ detailName, detailText }) {
+export default function DrugDetailRow({ detailName, detailText }) {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{detailName}</Text>
@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: wp(3),
     width: "100%",
   },
   details: {
