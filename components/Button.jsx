@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
 import { COLORS } from "../constants/colors";
+import { hp } from "../helpers/common.js";
 
 export default function Button({
   onPress,
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontSize: 16,
+    fontSize: hp(2.2),
   },
   pressed: {
     opacity: 0.7,

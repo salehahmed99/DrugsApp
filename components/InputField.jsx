@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { COLORS } from "../constants/colors";
 import { useState } from "react";
+import { hp, wp } from "../helpers/common";
 
 export default function InputField({
   value,
@@ -30,18 +31,19 @@ export default function InputField({
 
 const styles = StyleSheet.create({
   container: {
-    gap: 5,
+    gap: hp(1),
   },
   textInput: {
     borderWidth: 1,
     borderColor: COLORS.primary,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: wp(3.5),
+    paddingVertical: hp(1.5),
     borderRadius: 10,
+    fontSize: hp(1.7),
   },
   label: {
     color: COLORS.primary,
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: hp(2.2),
   },
 });

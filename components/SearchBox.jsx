@@ -1,6 +1,7 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
 import React from "react";
+import { hp, wp } from "../helpers/common";
 
 export default function SearchBox({ value, onChangeText }) {
   return (
@@ -16,9 +17,9 @@ const styles = StyleSheet.create({
   searchBox: {
     borderWidth: 1,
     borderColor: COLORS.secondaryText,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: wp(3.5),
+    paddingVertical: hp(1.5),
     borderRadius: 12,
-    fontSize:16,
+    fontSize:hp(2),
   },
 });

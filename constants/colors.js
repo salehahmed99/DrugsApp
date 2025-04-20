@@ -10,7 +10,8 @@ export const COLORS = {
   // Neutrals
   lightBackground: "#F5F5F5",
   darkText: "#2D3748",
-  secondaryText: "#718096",
+  secondaryText: "#4a4e69",
+  
   pureWhite: "#FFFFFF",
 
   // Status Colors
