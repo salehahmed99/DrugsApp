@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import DrugDetailRow from './DrugDetailRow'
-import { hp, wp } from '../helpers/common'
-import { COLORS } from '../constants/colors'
+import { hp, wp } from '../../helpers/common'
+import { COLORS } from '../../constants/colors'
 
 const DrugPrimaryDetails = ({ clicked, name, contents, price }) => {
     return (

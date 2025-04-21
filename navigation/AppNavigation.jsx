@@ -1,13 +1,15 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import DrugsScreen from "../screens/DrugsScreen";
 import ManageDrugScreen from "../screens/ManageDrugScreen";
 import DrugDetailsScreen from "../screens/DrugDetailsScreen";
 import AlternativesScreen from "../screens/AlternativesScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { COLORS } from "../constants/colors";
-import { Ionicons } from "@expo/vector-icons";
-import AboutScreen from "../screens/AboutScreen";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+
+import MoreScreen from "../screens/MoreScreen";
+import SearchScreen from "../screens/SearchScreen";
+import HomeScreen from "../screens/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,24 +23,32 @@ function DrawerNavigator() {
         tabBarActiveTintColor: COLORS.secondary,
       }}
     >
-      <BottomTab.Screen
-        name="DrugsScreen"
-        component={DrugsScreen}
+      <BottomTab.Screen name="HomeScreen"
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
+            <Ionicons name="home-outline" size={size} color={color} />
           ),
           tabBarLabel: "Home",
+        }} />
+      <BottomTab.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="search" size={size} color={color} />
+          ),
+          tabBarLabel: "Search",
         }}
       />
       <BottomTab.Screen
-        name="AboutScreen"
-        component={AboutScreen}
+        name="MoreScreen"
+        component={MoreScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="information" size={size} color={color} />
+            <Ionicons name="menu" size={size} color={color} />
           ),
-          tabBarLabel: "About",
+          tabBarLabel: "More",
         }}
       />
     </BottomTab.Navigator>
@@ -73,6 +83,7 @@ export default function AppNavigation() {
             title: "Drug Details",
             headerTitleAlign: "center",
             headerBackTitle: "Back",
+            // headerShown:false
           }}
         />
         <Stack.Screen

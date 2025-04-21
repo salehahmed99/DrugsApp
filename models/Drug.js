@@ -7,7 +7,8 @@ export class Drug {
     pharmacology,
     subCategory,
     company,
-    imageUrl
+    imageUrl,
+    indications
   ) {
     this.id = id;
     this.name = name;
@@ -17,5 +18,6 @@ export class Drug {
     this.subCategory = subCategory;
     this.company = company;
     this.imageUrl = imageUrl;
+    this.indications = indications;
   }
 }

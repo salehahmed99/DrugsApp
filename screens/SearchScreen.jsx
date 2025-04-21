@@ -6,14 +6,15 @@ import {
   TextInput,
   Alert,
 } from "react-native";
-import DrugList from "../components/DrugList";
+import DrugList from "../components/Drug/DrugList";
 import { COLORS } from "../constants/colors";
-import IconButton from "../components/IconButton";
+import IconButton from "../components/Buttons/IconButton";
 import { useContext, useEffect, useState } from "react";
 import DrugsContextProvider, { DrugsContext } from "../store/drugs-context";
 import SearchBox from "../components/SearchBox";
+import { hp, wp } from "../helpers/common";
 
-function DrugsScreen({ navigation }) {
+function SearchScreen({ navigation }) {
   const drugsContext = useContext(DrugsContext);
   const [sortAsending, setSortAscending] = useState(true);
 
@@ -44,7 +45,7 @@ function DrugsScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Drug List</Text>
+      <Text style={styles.title}>Search</Text>
       <View style={styles.searchOuterContainer}>
         <View style={styles.searchContainer}>
           <SearchBox onChangeText={setSearchQuery} value={searchQuery} />
@@ -66,22 +67,19 @@ function DrugsScreen({ navigation }) {
     </View>
   );
 }
-export default DrugsScreen;
+export default SearchScreen;
 
 const styles = StyleSheet.create({
-  safeAreaView: {
-    flex: 1,
-  },
   container: {
     flex: 1,
     paddingTop: 20,
     position: "relative",
   },
   title: {
-    fontSize: 30,
+    fontSize: hp(4),
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: 40,
+    marginTop: hp(4),
     color: COLORS.secondary,
   },
 
@@ -95,9 +93,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 20,
-    marginHorizontal: 20,
-    gap: 10,
+    marginTop: hp(3),
+    paddingHorizontal: wp(5),
+    gap: wp(2),
   },
   searchContainer: {
     flex: 1,

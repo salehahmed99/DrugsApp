@@ -1,7 +1,7 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import {Pressable, StyleSheet } from "react-native";
 import {MaterialIcons}from "@expo/vector-icons";
-import { COLORS } from "../constants/colors";
-import { wp } from "../helpers/common";
+import { COLORS } from "../../constants/colors";
+import { wp } from "../../helpers/common";
 export default function IconButton({ onPress, style, icon , size}) {
   return (
     <Pressable
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.6,
     shadowRadius: 8,
     backgroundColor: COLORS.secondary,
-    padding: wp(3.5),
+    padding: wp(2.5),
   },
   pressed: {
     opacity: 0.7,

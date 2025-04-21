@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet } from "react-native";
-import { hp, wp } from "../helpers/common";
-import { COLORS } from "../constants/colors";
+import { hp, wp } from "../../helpers/common";
+import { COLORS } from "../../constants/colors";
 
-export default function DrugDetailRow({ detailName, detailText }) {
+export default function DrugDetailRow({ detailName, detailDescription }) {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{detailName}</Text>
-      <Text style={styles.details}>{detailText}</Text>
+      <Text style={styles.description}>{detailDescription}</Text>
     </View>
   );
 }
@@ -14,10 +14,9 @@ export default function DrugDetailRow({ detailName, detailText }) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "center",
     width: "100%",
   },
-  details: {
+  description: {
     fontSize: hp(1.7),
     flexWrap: "wrap",
     flexShrink: 1,

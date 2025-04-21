@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const AboutScreen = () => {
+const MoreScreen = () => {
   return (
     <View style={styles.container}>
       <Text>AboutScreen</Text>
@@ -9,7 +9,7 @@ const AboutScreen = () => {
   )
 }
 
-export default AboutScreen
+export default MoreScreen
 
 const styles = StyleSheet.create({
     container:{

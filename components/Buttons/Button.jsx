@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
-import { COLORS } from "../constants/colors";
-import { hp } from "../helpers/common.js";
+import { Text, StyleSheet, Pressable } from "react-native";
+import { COLORS } from "../../constants/colors.js";
+import { hp } from "../../helpers/common.js";
 
 export default function Button({
   onPress,

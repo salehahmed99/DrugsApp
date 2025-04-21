@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useContext, useEffect } from "react";
 import { DrugsContext } from "../store/drugs-context";
-import DrugList from "../components/DrugList";
+import DrugList from "../components/Drug/DrugList";
 
 const AlternativesScreen = ({ route, navigation }) => {
   const drugId = route.params.drugId;

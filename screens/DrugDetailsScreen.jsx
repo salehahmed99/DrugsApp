@@ -1,18 +1,11 @@
 import React, { useContext } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
-import DrugDetailItem from "../components/DrugDetailRow";
+import { View, StyleSheet, Alert, Text } from "react-native";
 import { DrugsContext } from "../store/drugs-context";
-import { COLORS } from "../constants/colors";
-import IconButton from "../components/IconButton";
-import Button from "../components/Button";
 import { hp, wp } from "../helpers/common";
+import Separator from "../components/Separator";
+import DrugDetailItem from "../components/Drug/DrugDetailItem";
+import Button from "../components/Buttons/Button";
+import { COLORS } from "../constants/colors";
 
 export default function DrugDetailsScreen({ route, navigation }) {
   const drugsContext = useContext(DrugsContext);
@@ -47,45 +40,40 @@ export default function DrugDetailsScreen({ route, navigation }) {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: drug.imageUrl }} style={styles.image} />
+      <View style={styles.nameContainer}>
+        <Text style={styles.name}>{drug.name}</Text>
       </View>
-
       <View style={styles.drugDataContainer}>
-        <View style={styles.descriptionContainer}>
-          <Text style={styles.name}>{drug.name}</Text>
-          <Text style={styles.contents}>
-            {drug.contents.replace(/\+/g, " • ")}
-          </Text>
-        </View>
-
-        <View style={styles.detailsContainer}>
-          <DrugDetailItem
-            detailName="Sub-Category : "
-            detailText={drug.subCategory}
-          />
-          <DrugDetailItem
-            detailName="Pharmacology : "
-            detailText={drug.pharmacology}
-          />
-          <DrugDetailItem detailName="Producer : " detailText={drug.producer} />
-          <DrugDetailItem detailName="Price : " detailText={drug.price} />
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={editHandler}
-            title="Edit"
-            buttonStyle={[styles.button, { backgroundColor: COLORS.accent }]}
-            hasShadow={true}
-          />
-          <Button
-            onPress={deleteHandler}
-            title="Delete"
-            buttonStyle={[styles.button, { backgroundColor: COLORS.statusError }]}
-            hasShadow={true}
-          />
-        </View>
+        <DrugDetailItem label="Generic Name" description={drug.contents} />
+        <Separator />
+        <DrugDetailItem label="Price" description={drug.price} />
+        <Separator />
+        <DrugDetailItem
+          label="Main Info"
+          description={{
+            pharmacology: drug.pharmacology,
+            subCategory: drug.subCategory,
+            company: drug.company,
+          }}
+        />
+        <Separator />
+        <DrugDetailItem label="Details" description={drug.indications} />
       </View>
+
+      {/* <View style={styles.buttonContainer}>
+        <Button
+          onPress={editHandler}
+          title="Edit"
+          buttonStyle={[styles.button, { backgroundColor: COLORS.accent }]}
+          hasShadow={true}
+        />
+        <Button
+          onPress={deleteHandler}
+          title="Delete"
+          buttonStyle={[styles.button, { backgroundColor: COLORS.statusError }]}
+          hasShadow={true}
+        />
+      </View> */}
     </View>
   );
 }
@@ -93,44 +81,31 @@ export default function DrugDetailsScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 25,
-  },
-  imageContainer: {
-    height: hp(30),
-    width:"100%"
-    // borderWidth: 1,
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
-  },
-  drugDataContainer:{
-    gap:hp(4),
-  },
-  descriptionContainer: {
-    // borderWidth: 1,
-    gap: hp(1),
-    justifyContent: 'center'
+    padding: wp(5),
+    gap: hp(3),
   },
   name: {
+    fontWeight: "bold",
     fontSize: hp(2.5),
     textAlign: "center",
-    fontWeight: "bold",
   },
-  contents: {
-    color: COLORS.secondaryText,
-    textAlign: "center",
+  nameContainer: {
+    // borderWidth:2,
+    height:hp(6),
+    justifyContent:'center'
   },
-  detailsContainer: {
-    width: '100%',
+
+  drugDataContainer: {
     gap: hp(2),
+
   },
 
   buttonContainer: {
     flexDirection: "row",
     alignSelf: "center",
     gap: wp(10),
+    borderWidth:2,
+    flex:1,
     // justifyContent: "space-between",
   },
   button: {

@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
-import { hp, wp } from '../helpers/common'
+import { hp, wp } from '../../helpers/common'
 import Button from './Button'
 
 const ButtonsContainer = ({ hideAlternatives, onDetailsPress, onAlternativesPress }) => {

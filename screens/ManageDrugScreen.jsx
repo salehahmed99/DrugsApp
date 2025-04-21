@@ -19,7 +19,7 @@ import {
   PermissionStatus,
 } from "expo-image-picker";
 import { COLORS } from "../constants/colors";
-import Button from "../components/Button";
+import Button from "../components/Buttons/Button";
 import { DrugsContext } from "../store/drugs-context";
 import InputField from "../components/InputField";
 import { Drug } from "../models/Drug";
