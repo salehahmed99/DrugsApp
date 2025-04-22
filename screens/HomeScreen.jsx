@@ -1,29 +1,30 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { fetchDrugs, fetchExpenses, storeDrug } from "../helpers/http";
 import { DrugsContext } from "../store/drugs-context";
 import Header from "../components/Header";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../constants/colors";
 import { hp, wp } from "../helpers/common";
-import Separator from "../components/Separator";
 import HomeSection from "../components/HomeSection";
 
 const HomeScreen = () => {
   const drugsContext = useContext(DrugsContext);
-  //   useEffect(() => {
-  //     const store = async () => {
-  //       for (let drug of drugsContext.drugs) {
-  //         await storeDrug(drug);
-  //       }
-  //     };
-  //     // store();
-  //   }, []);
+  // useEffect(() => {
+  //   const store = async () => {
+  //     for (let drug of drugsContext.drugs) {
+  //       await storeDrug(drug);
+  //     }
+  //   };
+  //   // store();
+  // }, []);
 
   useEffect(() => {
     const getDrugs = async () => {
+      drugsContext.setLoading(true);
       const drugs = await fetchDrugs();
       drugsContext.setFetchedDrugs(drugs);
+      drugsContext.setLoading(false);
     };
     getDrugs();
   }, []);
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
   },
   dataContainer: {
     paddingHorizontal: wp(5),
-    gap: hp(5),
-    marginVertical: hp(4),
+    gap: hp(6),
+    marginVertical: hp(3 ),
   },
 });

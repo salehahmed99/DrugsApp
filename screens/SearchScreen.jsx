@@ -29,15 +29,15 @@ function SearchScreen({ navigation }) {
 
   const isFocused = useIsFocused();
 
-  useEffect(() => {
-    const getDrugs = async () => {
-      if (isFocused) {
-        const drugs = await fetchDrugs();
-        drugsContext.setFetchedDrugs(drugs);
-      }
-    };
-    getDrugs();  
-  }, [isFocused]);
+  // useEffect(() => {
+  //   const getDrugs = async () => {
+  //     if (isFocused) {
+  //       const drugs = await fetchDrugs();
+  //       drugsContext.setFetchedDrugs(drugs);
+  //     }
+  //   };
+  //   getDrugs();
+  // }, [isFocused]);
 
   useEffect(() => {
     const filteredDrugs = drugsContext.drugs.filter((drug) =>

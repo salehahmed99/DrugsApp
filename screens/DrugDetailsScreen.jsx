@@ -2,10 +2,8 @@ import React, { useContext } from "react";
 import { View, StyleSheet, Alert, Text } from "react-native";
 import { DrugsContext } from "../store/drugs-context";
 import { hp, wp } from "../helpers/common";
-import Separator from "../components/Separator";
+import Separator from "../components/Separators/Separator";
 import DrugDetailItem from "../components/Drug/DrugDetailItem";
-import Button from "../components/Buttons/Button";
-import { COLORS } from "../constants/colors";
 
 export default function DrugDetailsScreen({ route, navigation }) {
   const drugsContext = useContext(DrugsContext);

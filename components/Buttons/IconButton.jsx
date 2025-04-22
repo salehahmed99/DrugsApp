@@ -1,8 +1,8 @@
-import {Pressable, StyleSheet } from "react-native";
-import {MaterialIcons}from "@expo/vector-icons";
+import { Pressable, StyleSheet } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { COLORS } from "../../constants/colors";
 import { wp } from "../../helpers/common";
-export default function IconButton({ onPress, style, icon , size}) {
+export default function IconButton({ onPress, style, icon, size }) {
   return (
     <Pressable
       style={({ pressed }) => [styles.button, style, pressed && styles.pressed]}

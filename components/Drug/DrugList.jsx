@@ -1,6 +1,6 @@
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import Drug from "./Drug";
-import Separator from "../Separator";
+import Separator from "../Separators/Separator";
 export default function DrugList({ drugs, hideAlternatives = false }) {
   return (
     <View style={styles.listContainer}>

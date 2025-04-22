@@ -8,6 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 import DrugPrimaryDetails from "./DrugPrimaryDetails";
 import ButtonsContainer from "../Buttons/ButtonsContainer";
 import DrugSecondaryDetails from "./DrugSecondaryDetails";
+import { Skeleton } from "react-native-skeletons";
 
 export default function Drug({ id, hideAlternatives = false }) {
   const navigation = useNavigation();
@@ -17,6 +18,7 @@ export default function Drug({ id, hideAlternatives = false }) {
   if (!drug) return;
 
   const [clicked, setClicked] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
 
   const onDetailsPress = () => {
     navigation.navigate("DrugDetailsScreen", {
@@ -41,9 +43,17 @@ export default function Drug({ id, hideAlternatives = false }) {
           <View style={styles.imageContainer}>
             <Image
               source={{ uri: drug.imageUrl }}
-              style={styles.image}
+              style={[
+                styles.image,
+                (imageLoading || drugsContext.loading) && styles.hiddenImage,
+              ]}
               resizeMode="contain"
+              onLoadStart={() => setImageLoading(true)}
+              onLoad={() => setImageLoading(false)}
             />
+            {(imageLoading || drugsContext.loading) && (
+              <Skeleton width="100%" height="100%" style={styles.skeleton} />
+            )}
           </View>
           <View style={styles.detailsContainer}>
             <DrugPrimaryDetails
@@ -51,12 +61,14 @@ export default function Drug({ id, hideAlternatives = false }) {
               name={drug.name}
               contents={drug.contents}
               price={drug.price}
+              imageLoading={imageLoading}
             />
             <DrugSecondaryDetails
               clicked={clicked}
               company={drug.company}
               pharmacology={drug.pharmacology}
               subCategory={drug.subCategory}
+              imageLoading={imageLoading}
             />
           </View>
           <View style={styles.chevronContainer}>
@@ -93,14 +105,28 @@ const styles = StyleSheet.create({
   imageContainer: {
     height: hp(8.5),
     width: wp(20),
+    // borderWidth:1,
   },
   image: {
     width: "100%",
     height: "100%",
   },
+  hiddenImage: {
+    opacity: 0,
+  },
+  skeleton: {
+    position: "absolute", // Overlay skeleton on top of hidden image
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 10,
+  },
   detailsContainer: {
     flex: 1,
     gap: hp(1.5),
+    // borderWidth:1,
+    justifyContent: "center",
   },
   chevronContainer: {
     justifyContent: "center",

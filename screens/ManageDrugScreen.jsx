@@ -22,6 +22,7 @@ import InputField from "../components/InputField";
 import { Drug } from "../models/Drug";
 import { hp, wp } from "../helpers/common";
 import { Ionicons } from "@expo/vector-icons";
+import { storeDrug } from "../helpers/http";
 
 export default function ManageDrugScreen({ navigation, route }) {
   const drugId = route.params?.drugId;
@@ -82,7 +83,7 @@ export default function ManageDrugScreen({ navigation, route }) {
     }
   };
 
-  const saveDrugHandler = () => {
+  const saveDrugHandler = async () => {
     if (
       drugName.trim().length === 0 ||
       drugContents.trim().length == 0 ||
@@ -111,7 +112,8 @@ export default function ManageDrugScreen({ navigation, route }) {
         drugProducer.trim(),
         drugImageUrl.trim()
       );
-      drugsContext.addDrug(newDrug);
+      const drugId = await storeDrug(newDrug);
+      drugsContext.addDrug({ ...newDrug, id: drugId });
     } else {
       const drugDetails = {
         name: drugName.trim(),

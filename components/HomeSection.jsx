@@ -50,7 +50,7 @@ export default HomeSection;
 
 const styles = StyleSheet.create({
   container: {
-    gap: hp(1),
+    gap: hp(2),
   },
   label: {
     fontWeight: "600",

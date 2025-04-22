@@ -28,7 +28,7 @@ const DrugDetailItem = ({ label, description }) => {
           <Text>{description}</Text>
         </View>
       );
-      iconName="document-text";
+      iconName = "document-text";
   }
   return (
     <View style={styles.drugItemContainer}>

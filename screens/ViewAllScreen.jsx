@@ -3,6 +3,7 @@ import React, { useContext, useLayoutEffect } from "react";
 import { DrugsContext } from "../store/drugs-context";
 import { wp } from "../helpers/common";
 import DrugItem from "../components/Drug/DrugItem";
+import Spacing from "../components/Separators/Spacing";
 
 const ViewAllScreen = ({ navigation, route }) => {
   const title = route.params.title;
@@ -27,6 +28,7 @@ const ViewAllScreen = ({ navigation, route }) => {
           />
         )}
         numColumns={3}
+        ItemSeparatorComponent={Spacing}
       />
     </View>
   );
@@ -35,9 +37,9 @@ const ViewAllScreen = ({ navigation, route }) => {
 export default ViewAllScreen;
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        padding: wp(5),
-        // borderWidth:1,
-    }
+  container: {
+    flex: 1,
+    padding: wp(5),
+    // borderWidth:1,
+  },
 });

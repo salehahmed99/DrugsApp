@@ -1,26 +1,44 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { hp } from "../../helpers/common";
 import DrugDetailRow from "./DrugDetailRow";
+import { DrugsContext } from "../../store/drugs-context";
+import { Skeleton } from "react-native-skeletons";
 
 const DrugSecondaryDetails = ({
   clicked,
   pharmacology,
   subCategory,
   company,
+  imageLoading,
 }) => {
+  const { loading } = useContext(DrugsContext);
+
   return (
     clicked && (
       <View style={styles.container}>
-        <DrugDetailRow
-          detailName="Pharmacology : "
-          detailDescription={pharmacology}
-        />
-        <DrugDetailRow
-          detailName="Sub-Category : "
-          detailDescription={subCategory}
-        />
-        <DrugDetailRow detailName="Company : " detailDescription={company} />
+        {imageLoading || loading ? (
+          <Skeleton />
+        ) : (
+          <DrugDetailRow
+            detailName="Pharmacology : "
+            detailDescription={pharmacology}
+          />
+        )}
+
+        {imageLoading || loading ? (
+          <Skeleton />
+        ) : (
+          <DrugDetailRow
+            detailName="Sub-Category : "
+            detailDescription={subCategory}
+          />
+        )}
+        {imageLoading || loading ? (
+          <Skeleton />
+        ) : (
+          <DrugDetailRow detailName="Company : " detailDescription={company} />
+        )}
       </View>
     )
   );
