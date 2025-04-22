@@ -30,7 +30,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <ScrollView>
+      <ScrollView style={{ flex: 1 }}>
         <View style={styles.dataContainer}>
           <HomeSection label="Recent Products" />
           <HomeSection label="Top Products Last Q" />
@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
   dataContainer: {
     paddingHorizontal: wp(5),
     gap: hp(5),
-    marginTop: hp(3),
+    marginVertical: hp(4),
   },
 });

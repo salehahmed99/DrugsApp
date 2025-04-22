@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DrugsContext } from "../store/drugs-context";
 import DrugList from "../components/Drug/DrugList";
 
@@ -7,7 +7,8 @@ const AlternativesScreen = ({ route, navigation }) => {
   const drugId = route.params.drugId;
   const drugsContext = useContext(DrugsContext);
   const mainDrug = drugsContext.drugs.find((drug) => drug.id === drugId);
-  const alternatives = [];
+
+  const [alternatives, setAlternatives] = useState([]);
   useEffect(() => {
     navigation.setOptions({
       title: ` Alternatives for ${mainDrug.name.split(" ")[0]}`,
@@ -19,13 +20,13 @@ const AlternativesScreen = ({ route, navigation }) => {
       for (let drugContent of mainDrugContents) {
         const crntDrugContents = drug.contents.split("+");
         if (crntDrugContents.includes(drugContent) && drug.id !== drugId) {
-          console.log(drug.name);
-          alternatives.push(drug);
+          setAlternatives((p) => [...p, drug]);
           break;
         }
       }
     }
   }, []);
+
   return <DrugList drugs={alternatives} hideAlternatives={true} />;
 };
 

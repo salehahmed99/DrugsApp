@@ -10,6 +10,8 @@ import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import MoreScreen from "../screens/MoreScreen";
 import SearchScreen from "../screens/SearchScreen";
 import HomeScreen from "../screens/HomeScreen";
+import ViewAllScreen from "../screens/ViewAllScreen";
+import { Platform } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,14 +25,16 @@ function DrawerNavigator() {
         tabBarActiveTintColor: COLORS.secondary,
       }}
     >
-      <BottomTab.Screen name="HomeScreen"
+      <BottomTab.Screen
+        name="HomeScreen"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
           tabBarLabel: "Home",
-        }} />
+        }}
+      />
       <BottomTab.Screen
         name="SearchScreen"
         component={SearchScreen}
@@ -54,6 +58,7 @@ function DrawerNavigator() {
     </BottomTab.Navigator>
   );
 }
+
 export default function AppNavigation() {
   return (
     <NavigationContainer>
@@ -72,7 +77,7 @@ export default function AppNavigation() {
           name="ManageDrugScreen"
           component={ManageDrugScreen}
           options={{
-            presentation: "modal",
+            presentation: Platform.OS === "ios" ? "modal" : "card",
             headerShown: false,
           }}
         />
@@ -90,6 +95,7 @@ export default function AppNavigation() {
           name="AlternativesScreen"
           component={AlternativesScreen}
         />
+        <Stack.Screen name="ViewAllScreen" component={ViewAllScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

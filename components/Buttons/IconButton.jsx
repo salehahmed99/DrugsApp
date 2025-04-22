@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     backgroundColor: COLORS.secondary,
     padding: wp(2.5),
+    elevation: 20,
   },
   pressed: {
     opacity: 0.7,

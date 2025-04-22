@@ -3,14 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   Pressable,
   Alert,
   ScrollView,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
   Platform,
-  Keyboard,
   Image,
 } from "react-native";
 import {
@@ -23,6 +20,8 @@ import Button from "../components/Buttons/Button";
 import { DrugsContext } from "../store/drugs-context";
 import InputField from "../components/InputField";
 import { Drug } from "../models/Drug";
+import { hp, wp } from "../helpers/common";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function ManageDrugScreen({ navigation, route }) {
   const drugId = route.params?.drugId;
@@ -133,6 +132,18 @@ export default function ManageDrugScreen({ navigation, route }) {
       style={{ flex: 1 }}
     >
       <ScrollView style={styles.container}>
+        {Platform.OS === "android" && (
+          <Pressable
+            onPress={() => navigation.goBack()}
+            style={({ pressed }) => [
+              styles.arrowLeftContainer,
+              pressed && styles.pressed,
+            ]}
+          >
+            <Ionicons name="chevron-back" size={24} />
+          </Pressable>
+        )}
+
         <Text style={styles.title}>
           {addingNewDrug ? "Add New Drug" : "Edit Drug Details"}
         </Text>
@@ -208,17 +219,32 @@ export default function ManageDrugScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    marginTop: Platform.OS === "android" ? hp(4) : 0,
+  },
+
   title: {
     textAlign: "center",
     fontSize: 25,
     fontWeight: "bold",
-    marginBottom: 50,
     color: COLORS.secondary,
+    marginBottom: 50,
   },
-  container: {
-    flex: 1,
-    padding: 20,
+  arrowLeftContainer: {
+    backgroundColor: "#E3E3E3",
+    borderRadius: 14,
+    alignSelf: "flex-start",
+    padding: wp(1.5),
+    position: "absolute",
+    left: 0,
+    top: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 3,
   },
+
   formContainer: {
     gap: 15,
     marginBottom: 10,

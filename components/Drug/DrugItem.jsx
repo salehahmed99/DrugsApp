@@ -10,6 +10,7 @@ const DrugItem = ({ imageUrl, name, price, id }) => {
       drugId: id,
     });
   };
+
   return (
     <Pressable
       onPress={onDrugPressed}
@@ -27,7 +28,7 @@ const DrugItem = ({ imageUrl, name, price, id }) => {
           <Text style={styles.name} numberOfLines={2} ellipsizeMode="tail">
             {name}
           </Text>
-          <Text>{price}</Text>
+          <Text style={styles.price}>{price}</Text>
         </View>
       </View>
     </Pressable>
@@ -36,14 +37,17 @@ const DrugItem = ({ imageUrl, name, price, id }) => {
 
 export default DrugItem;
 
+const ITEMS_PER_PAGE = 3;
+const HORIZONTAL_PADDING = wp(5);
+const SCREEN_WIDTH = wp(100);
+const ITEM_WIDTH = (SCREEN_WIDTH - 2 * HORIZONTAL_PADDING) / ITEMS_PER_PAGE;
+
 const styles = StyleSheet.create({
   container: {
-    width: wp(33),
+    width: ITEM_WIDTH,
     height: hp(20),
     // borderWidth: 1,
 
-    // marginRight: 10,
-    // borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -63,6 +67,7 @@ const styles = StyleSheet.create({
     height: "40%",
     justifyContent: "center",
     alignItems: "center",
+    gap: hp(1),
     // borderWidth: 1,
   },
   name: {
@@ -72,7 +77,9 @@ const styles = StyleSheet.create({
     // borderWidth:1,
     // paddingHorizontal:wp(2)
   },
-  price: {},
+  price: {
+    fontSize: hp(1.5),
+  },
   pressed: {
     opacity: 0.7,
   },

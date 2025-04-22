@@ -40,7 +40,7 @@ const ALLERFEN = new Drug(
   "ALLERGY ANTI HISTAMINIC",
   "RESPIRATORY CARE MEDICATIONS",
   "AMOUN",
-  "https://delmar-test.linkedgates.com/images/items/139535.JPEG",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQblxIJdZSxAZPBxXH7FgcYIRpKZlRJT1lGJA&s",
   "ALLERGIC RHINITIS, HAY FEVER, ITCHY EYES"
 );
 
