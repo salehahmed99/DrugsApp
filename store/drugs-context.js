@@ -6,10 +6,11 @@ export const DrugsContext = createContext({
   addDrug: () => {},
   editDrug: () => {},
   deleteDrug: () => {},
+  setFetchedDrugs: () => {}
 });
 
 function DrugsContextProvider({ children }) {
-  const [drugs, setDrugs] = useState(DRUGS);
+  const [drugs, setDrugs] = useState([]);
 
   const addDrug = (newDrug) => {
     setDrugs((p) => [...p, newDrug]);
@@ -27,11 +28,16 @@ function DrugsContextProvider({ children }) {
     setDrugs((p) => p.filter((drug) => drug.id !== id));
   };
 
+  const setFetchedDrugs = (drugs) => {
+    setDrugs(drugs)
+  };
+
   const value = {
     drugs: drugs,
     addDrug: addDrug,
     editDrug: editDrug,
     deleteDrug: deleteDrug,
+    setFetchedDrugs: setFetchedDrugs,
   };
   return (
     <DrugsContext.Provider value={value}>{children}</DrugsContext.Provider>

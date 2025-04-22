@@ -9,10 +9,12 @@ import {
 import DrugList from "../components/Drug/DrugList";
 import { COLORS } from "../constants/colors";
 import IconButton from "../components/Buttons/IconButton";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import DrugsContextProvider, { DrugsContext } from "../store/drugs-context";
 import SearchBox from "../components/SearchBox";
 import { hp, wp } from "../helpers/common";
+import { useFocusEffect, useIsFocused } from "@react-navigation/native";
+import { fetchDrugs } from "../helpers/http";
 
 function SearchScreen({ navigation }) {
   const drugsContext = useContext(DrugsContext);
@@ -24,6 +26,18 @@ function SearchScreen({ navigation }) {
   const addDrugHandler = () => {
     navigation.navigate("ManageDrugScreen");
   };
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    const getDrugs = async () => {
+      if (isFocused) {
+        const drugs = await fetchDrugs();
+        drugsContext.setFetchedDrugs(drugs);
+      }
+    };
+    getDrugs();  
+  }, [isFocused]);
 
   useEffect(() => {
     const filteredDrugs = drugsContext.drugs.filter((drug) =>

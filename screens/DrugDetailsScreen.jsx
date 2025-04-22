@@ -10,6 +10,8 @@ import { COLORS } from "../constants/colors";
 export default function DrugDetailsScreen({ route, navigation }) {
   const drugsContext = useContext(DrugsContext);
   const drugId = route.params.drugId;
+
+  // console.log(drugId);
   const drug = drugsContext.drugs.find((drug) => drug.id === drugId);
 
   const editHandler = () => {
