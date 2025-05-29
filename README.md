@@ -17,46 +17,41 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
 ---
 
 ## 📸 Screenshots
-**Login & Signup:**
-
+### Login & Signup:
+<br>
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/welcomee.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/login.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/signup.jpg" height = "500"  alt="mobile-image" />
 </div>
+<br>
 
-
-
-**Home Screen:**
-
+### Home Screen:
+<br>
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_2.jpg" height = "500"  alt="mobile-image" />
 </div>
+<br>
 
-
-
-**Search:**
-
+### Search:
+<br>
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_2.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_3.jpg" height = "500"  alt="mobile-image" />
 </div>
+<br>
 
-
-
-**Drug details & alternatives:**
-
+### Drug details & alternatives:
+<br>
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/drug_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/drug_2.jpg" height = "500"  alt="mobile-image" />
 </div>
+<br>
 
-
-
-**Adding a drug:**
-
+### Adding a drug:
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/add_drug_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/add_drug_3.jpg" height = "500"  alt="mobile-image" />
