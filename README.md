@@ -1,7 +1,7 @@
 
-# MediFind (Working Title)
+# PharmaSearch
 
-MediFind is a cross-platform React Native application (Android & iOS) that allows users to search for any drug (medicine) and view detailed information including its price, active substances, indications, precautions, and available alternatives. The app also supports authentication via Supabase and stores its drug data in Firebase Realtime Database.
+PharmaSearch is a cross-platform React Native application (Android & iOS) that allows users to search for any drug (medicine) and view detailed information including its price, active substances, indications, precautions, and available alternatives. The app also supports authentication via Supabase and stores its drug data in Firebase Realtime Database.
 
 ---
 
@@ -60,7 +60,7 @@ MediFind is a cross-platform React Native application (Android & iOS) that allow
 
 ## 🔧 Tech Stack
 
-MediFind is built using a modern and lightweight technology stack:
+PharmaSearch is built using a modern and lightweight technology stack:
 
 | 🔧 Layer       | 🛠️ Technology        | 📋 Description                                                  |
 |----------------|----------------------|------------------------------------------------------------------|
