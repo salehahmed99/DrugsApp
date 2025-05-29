@@ -17,19 +17,31 @@ MediFind is a cross-platform React Native application (Android & iOS) that allow
 ---
 
 ## 📸 Screenshots
+**Login & Signup:**
 
-_Coming Soon_ (You can add screenshots or a demo video later)
+<img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/welcomee.png"  alt="welcome" />
+<img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/login.png"  alt="welcome" />
+<img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/signup.png"  alt="welcome" />
+
+**Search Results Page:**
+
+<img src="https://github.com/shady-2004/Seekr/blob/main/readme-assets/results.png" alt="results-page" />
 
 ---
 
 ## 🔧 Tech Stack
 
-- **React Native (Expo)**
-- **Firebase Realtime Database** – Drug data storage
-- **Supabase Auth** – User authentication
-- **React Navigation** – App navigation
-- **Context API** – Global state management
-- **StyleSheet API** – App styling
+MediFind is built using a modern and lightweight technology stack:
+
+| 🔧 Layer       | 🛠️ Technology        | 📋 Description                                                  |
+|----------------|----------------------|------------------------------------------------------------------|
+| Framework      | **React Native (Expo)** | Core cross-platform framework for mobile app development        |
+| Backend (DB)   | **Firebase Realtime DB** | Real-time drug data storage and syncing                        |
+| Auth Service   | **Supabase Auth**     | Secure user authentication system                               |
+| Navigation     | **React Navigation**  | Handles routing and screen transitions                          |
+| State Mgmt     | **Context API**       | Lightweight global state management                             |
+| Styling        | **StyleSheet API**    | Built-in styling for React Native components                    |
+
 
 ---
 
@@ -62,46 +74,5 @@ _Coming Soon_ (You can add screenshots or a demo video later)
    ```
 
 4. Use the Expo Go app (iOS/Android) to scan the QR code and run the app on your device.
-
----
-
-## 🔐 Admin Feature (Coming Soon)
-
-Currently, the ability to add new drugs is available for all users, but future updates will include **role-based access** to restrict this to admins only.
-
----
-
-## 📦 Future Improvements
-
-- [ ] Role-based authorization for admin-only features
-- [ ] Image storage via Firebase or Supabase
-- [ ] Pharmacy availability integration
-- [ ] In-app notifications for drug updates
-- [ ] Dark mode
-
----
-
-## 🛠️ Known Issues
-
-- No current enforcement of admin-only features
-- No backend validation on image upload (yet)
-
----
-
-## 📄 License
-
-This project is open-source and available under the MIT License.
-
----
-
-## 🙌 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
-
----
-
-## 📬 Contact
-
-Built by [Saleh Ahmed](mailto:your-email@example.com)
 
 ---
