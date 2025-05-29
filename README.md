@@ -17,8 +17,7 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
 ---
 
 ## 📸 Screenshots
-### Login & Signup:
-<br>
+#### Login & Signup:
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/welcomee.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/login.jpg" height = "500"  alt="mobile-image" />
@@ -26,16 +25,14 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
 </div>
 <br>
 
-### Home Screen:
-<br>
+#### Home Screen:
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_2.jpg" height = "500"  alt="mobile-image" />
 </div>
 <br>
 
-### Search:
-<br>
+#### Search:
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_2.jpg" height = "500"  alt="mobile-image" />
@@ -43,15 +40,14 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
 </div>
 <br>
 
-### Drug details & alternatives:
-<br>
+#### Drug details & alternatives:
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/drug_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/drug_2.jpg" height = "500"  alt="mobile-image" />
 </div>
 <br>
 
-### Adding a drug:
+#### Adding a drug:
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/add_drug_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/add_drug_3.jpg" height = "500"  alt="mobile-image" />
