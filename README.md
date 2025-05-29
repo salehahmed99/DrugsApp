@@ -18,42 +18,46 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
 
 ## 📸 Screenshots
 ### Login & Signup:
+
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/welcomee.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/login.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/signup.jpg" height = "500"  alt="mobile-image" />
 </div>
 
+
 ### Home Screen:
+
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_2.jpg" height = "500"  alt="mobile-image" />
 </div>
 
+
 ### Search:
+
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_2.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_3.jpg" height = "500"  alt="mobile-image" />
 </div>
 
+
 ### Drug details & alternatives:
+
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/drug_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/drug_2.jpg" height = "500"  alt="mobile-image" />
 </div>
 
 
+
 ### Adding a drug:
+
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/add_drug_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/add_drug_3.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/add_drug_4.jpg" height = "500"  alt="mobile-image" />
-</div>
-
-### About:
-<div align="center">
-  <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/about.png" height = "500"  alt="mobile-image" />
 </div>
 
 ---
@@ -71,37 +75,5 @@ PharmaSearch is built using a modern and lightweight technology stack:
 | State Mgmt     | **Context API**       | Lightweight global state management                             |
 | Styling        | **StyleSheet API**    | Built-in styling for React Native components                    |
 
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js & npm
-- Expo CLI:  
-  ```bash
-  npm install -g expo-cli
-  ```
-
-### Installation
-
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/medifind.git
-   cd medifind
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the Expo dev server:
-   ```bash
-   expo start
-   ```
-
-4. Use the Expo Go app (iOS/Android) to scan the QR code and run the app on your device.
 
 ---
