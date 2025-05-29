@@ -48,7 +48,7 @@ export default function Drug({ id, hideAlternatives = false }) {
                 (imageLoading || drugsContext.loading) && styles.hiddenImage,
               ]}
               resizeMode="contain"
-              onLoadStart={() => setImageLoading(true)}
+              // onLoadStart={() => setImageLoading(true)}
               onLoad={() => setImageLoading(false)}
             />
             {(imageLoading || drugsContext.loading) && (

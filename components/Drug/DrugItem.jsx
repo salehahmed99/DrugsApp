@@ -37,9 +37,9 @@ const DrugItem = ({ imageUrl, name, price, id }) => {
               (loading || imageLoading) && styles.hiddenImage,
             ]}
             resizeMode="contain"
-            onLoadStart={() => {
-              setImageLoading(true);
-            }}
+            // onLoadStart={() => {
+            //   setImageLoading(true);
+            // }}
             onLoad={() => {
               setImageLoading(false);
             }} // Image has loaded

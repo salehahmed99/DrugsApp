@@ -11,7 +11,7 @@ const WelcomeScreen = ({ children, bg, navigation }) => {
         resizeMode="contain"
       />
       <View style={styles.titleAndDescriptionContainer}>
-        <Text style={styles.title}>PharmaApp</Text>
+        <Text style={styles.title}>PharmaSearch</Text>
         <Text style={styles.description}>
         Your Health, Our Priority — Anytime, Anywhere.
         </Text>
