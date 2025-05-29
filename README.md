@@ -1,5 +1,5 @@
 
-# PharmaSearch
+# 💊 PharmaSearch: Find your cure, fast and easy.
 
 PharmaSearch is a cross-platform React Native application (Android & iOS) that allows users to search for any drug and view detailed information including its price, active substances, indications, and available alternatives. The app also supports authentication via Supabase and stores its drug data in Firebase Realtime Database.
 
