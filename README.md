@@ -26,7 +26,11 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
 </div>
 
 
+
+
 ### Home Screen:
+
+
 
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_1.jpg" height = "500"  alt="mobile-image" />
