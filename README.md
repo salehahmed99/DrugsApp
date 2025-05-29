@@ -25,12 +25,16 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/signup.jpg" height = "500"  alt="mobile-image" />
 </div>
 
+
+
 **Home Screen:**
 
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/home_2.jpg" height = "500"  alt="mobile-image" />
 </div>
+
+
 
 **Search:**
 
@@ -40,12 +44,16 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/search_3.jpg" height = "500"  alt="mobile-image" />
 </div>
 
+
+
 **Drug details & alternatives:**
 
 <div align="center">
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/drug_1.jpg" height = "500"  alt="mobile-image" />
   <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/drug_2.jpg" height = "500"  alt="mobile-image" />
 </div>
+
+
 
 **Adding a drug:**
 
