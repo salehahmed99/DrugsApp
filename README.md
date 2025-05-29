@@ -64,14 +64,12 @@ PharmaSearch is a cross-platform React Native application (Android & iOS) that a
 
 PharmaSearch is built using a modern and lightweight technology stack:
 
-| 🔧 Layer       | 🛠️ Technology        | 📋 Description                                                  |
-|----------------|----------------------|------------------------------------------------------------------|
-| Framework      | **React Native (Expo)** | Core cross-platform framework for mobile app development        |
-| Backend (DB)   | **Firebase Realtime DB** | Real-time drug data storage and syncing                        |
-| Auth Service   | **Supabase Auth**     | Secure user authentication system                               |
-| Navigation     | **React Navigation**  | Handles routing and screen transitions                          |
-| State Mgmt     | **Context API**       | Lightweight global state management                             |
-| Styling        | **StyleSheet API**    | Built-in styling for React Native components                    |
-
+| 🔧 Layer       | 🛠️ Technology        |
+|----------------|----------------------|
+| Framework      | **React Native (Expo)** |
+| Backend (DB)   | **Firebase Realtime DB** |
+| Navigation     | **React Navigation**  |
+| State Management     | **Context API**       |
+| Styling        | **StyleSheet API**    |
 
 ---
