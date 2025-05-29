@@ -17,15 +17,12 @@ MediFind is a cross-platform React Native application (Android & iOS) that allow
 ---
 
 ## 📸 Screenshots
-**Login & Signup:**
-
-<img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/welcomee.jpg"  alt="welcome"  height = "500" />
-<img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/login.jpg"  alt="welcome"  height = "500" />
-<img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/signup.jpg"  alt="welcome"  height = "500" />
-
-**Search Results Page:**
-
-<img src="https://github.com/shady-2004/Seekr/blob/main/readme-assets/results.png" alt="results-page" />
+### Login & Signup
+<div align="center">
+  <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/welcomee.jpg" height = "500"  alt="mobile-image" />
+  <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/login.jpg" height = "500"  alt="mobile-image" />
+  <img src="https://github.com/salehahmed99/pharma-search/blob/main/readme-assets/signup.jpg" height = "500"  alt="mobile-image" />
+</div>
 
 ---
 
